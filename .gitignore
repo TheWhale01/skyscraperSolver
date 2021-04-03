@@ -1,3 +1,5 @@
 *.o
-./a.out
-./skyscraper
+a.out
+.skyscraper
+.vscode/
+.gitignore
