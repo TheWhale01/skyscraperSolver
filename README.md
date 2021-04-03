@@ -12,6 +12,8 @@ order of the digits in the argument:
 2 - checking columns from the bottom
 3 - checking rows from the left
 4 - checking row from the right
+
+
                1
          ---------------
           4   1   2   3
