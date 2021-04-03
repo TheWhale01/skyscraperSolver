@@ -14,6 +14,7 @@ order of the digits in the argument: <br>
 4 - checking row from the right<br>
 <br>
 <br>
+<pre>
                1<br>
           --------------<br>
           4   1   2   3<br>
@@ -29,4 +30,4 @@ order of the digits in the argument: <br>
           1   2   2   2<br>
          --------------- <br>
                2<br>
-    
+ </pre>
