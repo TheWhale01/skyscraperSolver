@@ -12,22 +12,3 @@ order of the digits in the argument: <br>
 2 - checking columns from the bottom<br>
 3 - checking rows from the left<br>
 4 - checking row from the right<br>
-<br>
-<br>
-<pre>
-               1<br>
-          --------------<br>
-          4   1   2   3<br>
-         ===============<br>
-   | 2  |   |   |   |   |  3 |<br>
-   |     ===============     |<br>
-   | 2  |   |   |   |   |  2 |<br>
-3  |     ===============     |  4<br>
-   | 2  |   |   |   |   |  1 |<br>
-   |     ===============     |<br>
-   | 1  |   |   |   |   |  4 |<br>
-         ===============<br>
-          1   2   2   2<br>
-         --------------- <br>
-               2<br>
- </pre>
