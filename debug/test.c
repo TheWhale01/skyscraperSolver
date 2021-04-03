@@ -128,7 +128,8 @@ int solve(int tab[4][4], int entry[16], int pos)
                 return (1);
         }
     }
-    //did not find a solution
+    //did not find any solutions
+    tab[pos / 4][pos % 4] = 0;
     return (0);
 }
 
@@ -155,6 +156,6 @@ int main()
         }
     }
     else
-        printf("Did not find a solution\n");
+        printf("Did not find any solutions\n");
     return (0);
 }

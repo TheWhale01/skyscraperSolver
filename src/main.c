@@ -18,18 +18,22 @@ int main(int ac, char **av)
 
 	//store entered clues in an array
 	entry = get_numbers(av[1]);
-	solve(tab, entry, 0);
 
-	//display solution
-	while (++i < 4)
+	if (solve(tab, entry, 0) == 1)
 	{
-		j = -1;
-		while (++j < 4)
+		//display solution
+		while (++i < 4)
 		{
-			ft_putnbr(tab[i][j]);
-			ft_putchar(' ');
+			j = -1;
+			while (++j < 4)
+			{
+				ft_putnbr(tab[i][j]);
+				ft_putchar(' ');
+			}
+			ft_putchar('\n');
 		}
-		ft_putchar('\n');
 	}
+	else
+		ft_putstr("Did not find any solutions\n");
 	return (0);
 }
