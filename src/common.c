@@ -1,16 +1,19 @@
 #include <unistd.h>
 
+// Prints a single char
 void ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
+//prints a list of characters
 void ft_putstr(char *str)
 {
 	while (*str)
 		write(1, str++, 1);
 }
 
+//gives the length of a list of character (strlen)
 int ft_strlen(char *str)
 {
 	int i;
@@ -21,6 +24,7 @@ int ft_strlen(char *str)
 	return (i);
 }
 
+//similar to (atoi() in stdlib.h)
 int ft_atoi(char *str)
 {
 	int i;
@@ -42,6 +46,7 @@ int ft_atoi(char *str)
 	return (nbr);
 }
 
+//prints a number in the standart output
 void ft_putnbr(int nb)
 {
 	unsigned int nbr;
