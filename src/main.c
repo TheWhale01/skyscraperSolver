@@ -15,8 +15,12 @@ int main(int ac, char **av)
 	if (check(ac, av) == 1)
 		return (0);
 	i = -1;
+
+	//store entered clues in an array
 	entry = get_numbers(av[1]);
 	solve(tab, entry, 0);
+
+	//display solution
 	while (++i < 4)
 	{
 		j = -1;

@@ -35,13 +35,16 @@ int solve(int tab[4][4], int entry[16], int pos)
 	size = 0;
 	while (++size <= 4)
 	{
+		//checking if the number I want to place is correct
 		if (check_case(tab, pos, entry, size) == 0)
 		{
 			tab[pos / 4][pos % 4] = size;
+			//checking for next possibility
 			if (solve(tab, entry, pos + 1) == 1)
 				return (1);
 		}
 	}
-	tab[pos / 4][pos % 4] = 0;
-	return (1);
+
+	//did not find a solution
+	return (0);
 }
