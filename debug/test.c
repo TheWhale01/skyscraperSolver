@@ -49,7 +49,7 @@ int check_row_right(int tab[4][4], int pos, int entry[16])
         while (--col > 0)
             if (tab[row][col] < tab[row][col - 1])
                 max++;
-        if (max != entry[12 + pos % 4])
+        if (max != entry[9 + pos % 4])
             return (1);
     }
     return (0);
@@ -89,16 +89,14 @@ int check_row_left(int tab[4][4], int pos, int entry[16])
         while (++col < 3)
             if (tab[row][col] < tab[row][col + 1])
                 max++;
-        if (max != entry[8 + pos])
+        if (max != entry[5 + pos])
             return (1);
     }
     return (0);
 }
 
-int check_case(int tab[4][4], int pos, int entry[16], int num)
+int check_case(int tab[4][4], int pos, int entry[16])
 {
-    if (check_double(tab, pos, num) == 1)
-        return (1);
     if (check_row_left(tab, pos, entry) == 1)
         return (1);
     if (check_row_right(tab, pos, entry) == 1)
@@ -120,42 +118,49 @@ int solve(int tab[4][4], int entry[16], int pos)
     while (++size <= 4)
     {
         //checking if the number I want to place is correct
-        if (check_case(tab, pos, entry, size) == 0)
+        if (check_double(tab, pos, size) == 0)
         {
             tab[pos / 4][pos % 4] = size;
-            //checking for next possibility
-            if (solve(tab, entry, pos + 1) == 1)
-                return (1);
+            //checking if the board is correct with the new number
+            if (check_case(tab, pos, entry) == 0)
+            {
+                //checking for next possibility
+                if (solve(tab, entry, pos + 1) == 1)
+                    return (1);
+            }
+            else
+                tab[pos / 4][pos % 4] = 0;
         }
     }
     //did not find any solutions
-    tab[pos / 4][pos % 4] = 0;
     return (0);
+}
+
+void display_solution(int tab[4][4])
+{
+    int i;
+    int j;
+
+    i = -1;
+    while (++i < 4)
+    {
+        j = -1;
+        while (++j < 4)
+            printf("%d ", tab[i][j]);
+        printf("\n");
+    }
 }
 
 int main()
 {
-    int i;
-    int j;
     int tab[4][4] = {
         {0, 0, 0, 0},
         {0, 0, 0, 0},
         {0, 0, 0, 0},
         {0, 0, 0, 0},
     };
-    int entry[16] = {4, 1, 2, 3, 1, 2, 2, 2, 2, 2, 2, 1, 3, 2, 4};
-    i = -1;
-    if (solve(tab, entry, 0) == 1)
-    {
-        while (++i < 4)
-        {
-            j = -1;
-            while (++j < 4)
-                printf("%d ", tab[i][j]);
-            printf("\n");
-        }
-    }
-    else
-        printf("Did not find any solutions\n");
+    int entry[16] = {4, 1, 2, 3, 1, 2, 2, 2, 2, 2, 2, 1, 3, 2, 1, 4};
+    solve(tab, entry, 0);
+    display_solution(tab);
     return (0);
 }

@@ -50,6 +50,7 @@ int check_row_right(int tab[4][4], int pos, int entry[16])
 		if (max != entry[12 + pos % 4])
 			return (1);
 	}
+
 	return (0);
 }
 

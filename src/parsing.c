@@ -44,7 +44,7 @@ int solve(int tab[4][4], int entry[16], int pos)
 				return (1);
 		}
 	}
-
+	tab[pos / 4][pos % 4] = 0;
 	//did not find a solution
 	return (0);
 }
