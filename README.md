@@ -9,9 +9,9 @@ make<br>
 <br>
 order of the digits in the argument: <br>
 1 - checking columns from the top<br>
-2 - checking columns from the bottom
-3 - checking rows from the left
-4 - checking row from the right
+2 - checking columns from the bottom<br>
+3 - checking rows from the left<br>
+4 - checking row from the right<br>
 <br>
 <br>
                1<br>
