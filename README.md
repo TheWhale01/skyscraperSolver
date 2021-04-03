@@ -8,25 +8,25 @@ make
 
 
 order of the digits in the argument: 
-1 - checking columns from the top
+1 - checking columns from the top<br>
 2 - checking columns from the bottom
 3 - checking rows from the left
 4 - checking row from the right
 
 
                1
-         ---------------
+          --------------
           4   1   2   3
-        ===============
+         ===============
    | 2  |   |   |   |   |  3 |
    |     ===============     |
    | 2  |   |   |   |   |  2 |
-3  |      ===============    |  4
+3  |     ===============     |  4
    | 2  |   |   |   |   |  1 |
    |     ===============     |
    | 1  |   |   |   |   |  4 |
          ===============
-         1   2   2   2
-         ---------------- 
+          1   2   2   2
+         --------------- 
                2
     
