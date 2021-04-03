@@ -15,23 +15,19 @@ int check_double(int tab[4][4], int pos, int num)
 
 int check_col_up(int tab[4][4], int pos, int entry[16])
 {
-	int i;
 	int max;
-	int count;
+	int row;
+	int col;
 
-	i = -1;
-	count = 0;
+	row = -1;
+	max = 1;
+	col = pos % 4;
 	if (pos / 4 == 3)
 	{
-		while (++i < 4)
-		{
-			if (tab[i][pos % 4] > max)
-			{
-				max = tab[i][pos % 4];
-				count++;
-			}
-		}
-		if (entry[pos % 4] != count)
+		while (++row > 3)
+			if (tab[row][col] < tab[row + 1][col])
+				max++;
+		if (max != entry[pos % 4])
 			return (1);
 	}
 	return (0);
@@ -103,11 +99,11 @@ int check_case(int tab[4][4], int pos, int entry[16], int num)
 		return (1);
 	if (check_row_left(tab, pos, entry) == 1)
 		return (1);
-	else if (check_row_right(tab, pos, entry) == 1)
+	if (check_row_right(tab, pos, entry) == 1)
 		return (1);
-	else if (check_col_down(tab, pos, entry) == 1)
+	if (check_col_down(tab, pos, entry) == 1)
 		return (1);
-	else if (check_col_up(tab, pos, entry) == 1)
+	if (check_col_up(tab, pos, entry) == 1)
 		return (1);
 	return (0);
 }
