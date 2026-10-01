@@ -1,68 +1,33 @@
-#include "functions.h"
+#include "skyscraper.h"
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int solve(int tab[4][4], int entry[16], int pos)
-{
-	int size;
-
-	if (pos == 16)
-		return (1);
-	size = 0;
-	while (++size <= 4)
-	{
-		//checking if the number I want to place is correct
-		if (check_double(tab, pos, size) == 0)
-		{
-			tab[pos / 4][pos % 4] = size;
-			//checking if the tab is correct with the new number
-			if (check_case(tab, pos, entry) == 0)
-			{
-				//checking for next possibility
-				if (solve(tab, entry, pos + 1) == 1)
-					return (1);
-			}
-			else
-				tab[pos / 4][pos % 4] = 0;
+void display_solution(t_game *game) {
+	for (size_t i = 0; i < game->squared_size; i++) {
+		for (size_t j = 0; j < game->squared_size; j++) {
+			printf("%ld ", game->board[i][j]);
 		}
-	}
-	//did not find any solutions
-	return (0);
-}
-
-void display_solution(int tab[4][4])
-{
-	int i;
-	int j;
-
-	i = -1;
-	while (++i < 4)
-	{
-		j = -1;
-		while (++j < 4)
-		{
-			ft_putnbr(tab[i][j]);
-			ft_putchar(' ');
-		}
-		ft_putchar('\n');
+		printf("\n");
 	}
 }
 
 int main(int ac, char **av)
 {
-	int tab[4][4] = {
-		{0, 0, 0, 0},
-		{0, 0, 0, 0},
-		{0, 0, 0, 0},
-		{0, 0, 0, 0},
-	};
-	int *entry;
+    bool result;
+	t_game *game = NULL;
 
-	if (check(ac, av) == 1)
-		return (0);
-	entry = get_numbers(av[1]);
-
-	if (solve(tab, entry, 0) == 1)
-		display_solution(tab);
-	else
-		ft_putstr("Did not find any solutions\n");
-	return (0);
+	game = init(ac, av);
+	if (!game)
+		return EXIT_FAILURE;
+	result = solve(game, 0);
+	display_solution(game);
+	if (!result)
+	    fprintf(stderr, "Did not find any solutions\n");
+	free(game->input);
+	for (size_t i = 0; i < game->squared_size; i++)
+		free(game->board[i]);
+	free(game->board);
+	free(game);
+	return EXIT_SUCCESS;
 }

@@ -1,0 +1,5 @@
+compile_commands.json
+obj/
+skyscraper
+.zed/
+.cache/
